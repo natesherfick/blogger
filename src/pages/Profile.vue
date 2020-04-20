@@ -9,6 +9,9 @@
 <script>
 export default {
   name: "Profile",
+  created(){
+      this.$store.dispatch("getProfile");
+  },
   computed: {
     profile() {
       return this.$store.state.profile;
