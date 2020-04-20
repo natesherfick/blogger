@@ -20,6 +20,12 @@ const routes = [
     component: Profile,
     beforeEnter: authGuard,
   },
+  {
+    path: "/blogs/:blogId",
+    name: "blog-details",
+    // @ts-ignore
+    component: () => import(/*webpackChunkName: "blog-details" */'../pages/BlogDetails.vue')
+  },
 ];
 
 const router = new VueRouter({

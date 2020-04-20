@@ -1,5 +1,5 @@
 <template>
-  <div class="Blog col-4 my-2">
+  <div class="Blog col-4 my-2" @click="selectBlog()">
 <div class="card">
   <img class="card-img-top img-fluid" :src="blogData.imgUrl" alt="Card image cap">
   <div class="card-body">
@@ -21,7 +21,15 @@ export default {
   },
   mounted:{}, 
   computed:{},
-  methods:{},
+  methods: {
+    selectBlog() {
+      this.$store.commit("setActiveBlog", {});
+      this.$router.push({
+        name: "blog-details",
+        params: {blogId: this.blogData._id}
+      })
+    }
+  },
   components:{}
 }
 </script>
