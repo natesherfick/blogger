@@ -12,6 +12,7 @@
 <div class="row d-flex justify-content-center">
 <h3 class="col-7">Comments</h3>
 <Comment v-for="comment in activeComments" :commentData="comment" :key="comment._id"></Comment>
+<CreateComment class="col-7" v-if="this.$auth.isAuthenticated"></CreateComment>
 </div>
   </div>
 </template>
@@ -19,6 +20,7 @@
 
 <script>
   import Comment from "../components/Comment.vue"
+  import CreateComment from "../components/CreateComment.vue"
 export default {
   name: 'blog-details',
   data(){
@@ -39,7 +41,8 @@ export default {
   },
   methods:{},
   components:{
-    Comment
+    Comment,
+    CreateComment
   }
 }
 </script>

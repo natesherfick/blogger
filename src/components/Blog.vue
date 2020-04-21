@@ -1,6 +1,6 @@
 <template>
   <div class="Blog col-4 my-2" @click="selectBlog()">
-<div class="card">
+<div class="card bg-light">
   <img class="card-img-top img-fluid" :src="blogData.imgUrl">
   <div class="card-body">
     <h6>{{blogData.title}}: posted by {{blogData.creator.name}}</h6>

@@ -64,5 +64,14 @@ async getBlog({dispatch, commit}, blogId) {
         console.error(error);
       }
     },
+    async postComment({dispatch, commit}, newComment) {
+      try {
+      let res = await api.post("comments", newComment)
+      dispatch("getBlog", newComment.blogId)
+      }
+      catch (error) {
+        console.error(error);
+      }
+    },
   },
 });
