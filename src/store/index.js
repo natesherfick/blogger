@@ -64,12 +64,48 @@ async getBlog({dispatch, commit}, blogId) {
         console.error(error);
       }
     },
+    async editBlog({dispatch, commit}, editedBlog) {
+      try {
+      let res = await api.put("blogs/" + editedBlog._id, editedBlog)
+      dispatch("getBlog", editedBlog._id)
+      }
+      catch (error) {
+        console.error(error);
+      }
+    },
+    async deleteBlog({dispatch, commit}, blog) {
+      try {
+      await api.delete("blogs/" + blog._id)
+      dispatch("getBlogs")
+      }
+      catch (error) {
+        console.error(error);
+      }
+    },
+
     async postComment({dispatch, commit}, newComment) {
       try {
       let res = await api.post("comments", newComment)
       dispatch("getBlog", newComment.blogId)
       }
       catch (error) {
+        console.error(error);
+      }
+    },
+    async editComment({commit, dispatch}, editedComment) {
+      try {
+      let res = await api.put("comments/" + editedComment._id, editedComment)
+      dispatch("getBlog", editedComment.blogId)
+      }
+      catch (error) {
+        console.error(error);
+      }
+    },
+    async deleteComment({commit, dispatch }, comment) {
+      try {
+        let res = await api.delete("comments/" + comment.id);
+        dispatch("getBlog", comment.blogId)
+      } catch (error) {
         console.error(error);
       }
     },
