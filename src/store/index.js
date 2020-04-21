@@ -21,6 +21,7 @@ export default new Vuex.Store({
     setActiveBlog(state, activeBlog) {
       state.activeBlog = activeBlog;
     },
+
   },
   actions: {
     setBearer({}, bearer) {
@@ -50,6 +51,15 @@ async getBlog({dispatch, commit}, blogId) {
       try {
       let res = await api.get("blogs/" + blogId)
       commit("setActiveBlog", res.data) }
+      catch (error) {
+        console.error(error);
+      }
+    },
+    async createBlog({dispatch, commit}, newBlog) {
+      try {
+      let res = await api.post("blogs", newBlog)
+      dispatch("getBlogs")
+      }
       catch (error) {
         console.error(error);
       }
